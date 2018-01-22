@@ -1,0 +1,98 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Робота вашої мрії</title>
+
+    <link rel="stylesheet" href="{% static 'login.css' %}">
+    <script src="{% static 'login.js' %}"></script>
+</head>
+
+<body>
+
+    <div class="cotn_principal">
+        <div class="cont_centrar">
+            <h1 style="padding-top: 25px; color: crimson;">{{ error }}</h1>
+            <div class="cont_login">
+
+                <div class="cont_info_log_sign_up">
+                    <div class="col_md_login">
+                        <div class="cont_ba_opcitiy">
+
+
+                            <h2>LOGIN</h2>
+                            <p>To continue to enter data and go to your own office.</p>
+                            <button class="btn_login" onclick="cambiar_login()">LOGIN</button>
+                        </div>
+                    </div>
+
+                    <div class="col_md_sign_up">
+                        <div class="cont_ba_opcitiy">
+
+                            <h2>SIGN UP</h2>
+                            <p>Sign up to be able to find the people you need.</p>
+                            <button class="btn_sign_up" onclick="cambiar_sign_up()">SIGN UP</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cont_back_info">
+                    <div class="cont_img_back_grey">
+                        <img src="https://images.unsplash.com/42/U7Fc1sy5SCUDIu4tlJY3_NY_by_PhilippHenzler_philmotion.de.jpg?ixlib=rb-0.3.5&q=50&fm=jpg&crop=entropy&s=7686972873678f32efaf2cd79671673d" alt="" />
+                    </div>
+                </div>
+
+                <div class="cont_forms" >
+                    <div class="cont_img_back_">
+                        <img src="https://images.unsplash.com/42/U7Fc1sy5SCUDIu4tlJY3_NY_by_PhilippHenzler_philmotion.de.jpg?ixlib=rb-0.3.5&q=50&fm=jpg&crop=entropy&s=7686972873678f32efaf2cd79671673d" alt="" />
+                    </div>
+
+                    <form action="{% url 'login:submit_login' %}" method="post">
+
+                    <div class="cont_form_login">
+                        <a href="#" onclick="ocultar_login_sign_up()" ><i class="material-icons">&#xE5C4;</i></a>
+                        <h2>LOGIN</h2>
+
+                        {% csrf_token %}
+                        <input type="text" placeholder="Name"  required name="login"/>
+                        <input type="password" placeholder="Password" required  name="password" />
+
+                            <button class="btn_login" onclick="cambiar_login()">LOGIN</button>
+                    </div>
+
+                    </form>
+                    <form action="{% url 'registration:submit_registration' %}" method="post">
+
+                    <div class="cont_form_sign_up">
+                        <a href="#" onclick="ocultar_login_sign_up()"><i class="material-icons">&#xE5C4;</i></a>
+                        <h2>SIGN UP</h2>
+
+                        {% csrf_token %}
+
+                        <input type="text" name="name" id="login" required  placeholder="Name"/>
+                        <label for="login"></label>
+
+                        <input type="text" name="phone" id="second_name"  placeholder="Phone" required  pattern="^[ 0-9]+$"/>
+                        <label for="phone"></label>
+
+                        <input type="text" name="city" id="sity"  placeholder="City" required/>
+                        <label for="city"></label>
+
+                        <input type="email" name="mail" id="mail" required  placeholder="Email "/>
+                        <label for="mail"></label>
+
+                        <input type="password" name="password" placeholder="Password" required id="Password"/>
+                        <label for="password"></label>
+
+                        <button class="btn_sign_up" onclick="cambiar_sign_up()">SIGN UP</button>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

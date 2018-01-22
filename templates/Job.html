@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+     <form action="{% url 'find' %}" method="post" class="form-inline" style="margin-top:  3%;">
+        {% csrf_token %}
+         <button type="button" class="btn btn-default" ><a href="{% url 'landing' %}" style=" color: black;"><small><span class="glyphicon glyphicon-home"></span></small></a> </button>
+         <div class="form-group">
+            <input type="text" class="form-control" name ="exampleInputText3" id="exampleInputText3" placeholder="Job Title">
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control"  name ="exampleInputText2" id="exampleInputText2" placeholder="City">
+        </div>
+
+            <button type="submit" class="btn btn-default">Search vacancy</button>
+    </form>
+
+    <div id="list" style="padding-left: 28%; color: black;">
+
+    </div>
+
+    <div id="list_city" style=" padding-left: 45%;">
+
+    </div>
+
+    <header class = "Title_search">
+        <span class="_search_span">Latest</span>
+        <h2 class="_search">Search result</h2>
+    </header>
+
+    <h5 class="result_search">We found <strong>{{ j }}</strong> matches</h5>
+
+    <section class="no-padding-top bt-alt">
+        <div class="container">
+            <div class="row item-blocks-condensed">
+                {% for p in vacancy_main %}
+                    <div class="col-xs-12">
+                        <header>
+                            <a class="item-block" href="#">
+                                <div class="hgroup">
+                                    <div class="col-xs-6"> <a href="{% url 'product' p.id %}" class="name_vacancy"> <h4 class="name_job"> {{ p.name | truncatechars_html:29}} </h4></a></div>
+                                      <br><div class="col-xs-7"> <h5 class="name_company">{{ p.company.customer_name }}</h5></div>
+                                </div>
+                                <div class="header-meta">
+                                     <small>
+                                        <span class="fa-location-arrow glyphicon glyphicon-map-marker">{{ k }} {{  p.company.customer_city }}</span>
+                                    </small>
+                                    <div class="status_vacancy">
+                                      <span class="label label-success">{{ p.status }}</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </header>
+                    </div>
+                {% endfor %}
+
+                {% for p in vacancy %}
+                    <div class="col-xs-12">
+                        <header>
+                            <a class="item-block" href="#">
+                                <div class="hgroup">
+                                    <div class="col-xs-6"> <a href="{% url 'product' p.id %}"> <h4 class="name_job"> {{ p.name | truncatechars_html:29 }} </h4></a></div>
+                                    <br><div class="col-xs-7"> <h5 class="name_company">{{ p.company.customer_name }}</h5></div>
+                                </div>
+                                <div class="header-meta">
+                                    <small>
+                                        <span class="fa-location-arrow glyphicon glyphicon-map-marker">{{ k }} {{  p.company.customer_city }}</span>
+                                    </small>
+                                    <div class="status_vacancy">
+                                      <span class="label label-success">{{ p.status }}</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </header>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+{%  endblock %}

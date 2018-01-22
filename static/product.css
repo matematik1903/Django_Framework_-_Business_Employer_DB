@@ -1,0 +1,66 @@
+.title_vacancy {
+    font-size: medium;
+    color: blueviolet;
+
+}
+
+i {
+    font-size: 17px;
+    color: white;
+}
+
+.Name_vacancy {
+    color: #82f7e7;
+}
+
+.ifno_profesion {
+    color: rgba(0, 0, 0, 0.43);
+}
+
+.mad {
+    color: #000000;
+    font-size: 30px;
+    padding-left: 5%;
+}
+
+b {
+    font-size: 22px;
+}
+
+.btn-success {
+    margin-top: 2%;
+}
+
+.cvv {
+    padding-top: 1%;
+    padding-bottom: 3%;
+    width: 100%;
+    bottom:  auto;
+}
+
+.menu {
+    color: yellowgreen;
+}
+
+.name_vacancy {
+    color: #37eeff;
+}
+
+.form-horizontal, .well, .tyt {
+    background-color: white;
+}
+
+@media (max-width: 700px) {
+    .product_info_company {
+        padding-left: 1%;
+    }
+    .mad {
+        padding-left: 0;
+    }
+    .btn-success {
+        margin-top: 5%;
+    }
+}
+
+
+

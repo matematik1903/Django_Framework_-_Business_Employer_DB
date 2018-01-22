@@ -1,0 +1,17 @@
+.add_coin {
+	position: relative;
+	z-index: 1;
+	padding: 30px 30px 20px;
+	box-shadow: 0 5px 25px 0px;
+	transform: translateY(84px);
+}
+
+.row {
+	margin-left: 20%;
+	background-color: white
+}
+@media (max-width: 700px) {
+	.col-xs-4 {
+		width: 300%;
+	}
+}

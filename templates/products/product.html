@@ -1,0 +1,245 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Робота вашої мрії</title>
+
+           <!-- Latest compiled and minified CSS -->
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+        <!-- Latest compiled and minified JavaScript -->
+{#    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>#}
+
+{#    <script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>#}
+    <script src="{% static 'scripts.js' %}"></script>
+{#    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>#}
+    <link rel="stylesheet" href="{% static 'main.css' %}">
+    <link rel="stylesheet" href="{% static 'product.css' %}">
+
+    <link rel="stylesheet" href="{% static 'out_vacancy.css' %}">
+
+</head>
+<body style="background-image: url('{% static "img/bg-banner2.jpg"%}')">
+<div class="general-container" style="padding-bottom: -1%;">
+    <div class="block">
+        <nav>
+            <div class="container new_container">
+                <!-- Logo -->
+            <div class="pull-left">
+                <div class="logo-wrapper">
+                    <a class="logo" href="{% url 'landing' %}"> <img class="logotype" src="{% static "img/logo.png" %}"></a>
+                </div>
+            </div>
+            <!-- END Logo -->
+
+        <!-- User account -->
+            <div class="pull-right user-login">
+                <a class="btn btn-default" href="{% url 'personal' %}">Continue so employer</a>
+            </div>
+            <!-- END User account -->
+
+            <!-- Navigation menu -->
+              <form action="{% url 'find' %}" method="post" class="form-inline" style="margin-top:  3%;">
+                  {% csrf_token %}
+                  <div class="form-group">
+                      <input type="text" class="form-control" name ="exampleInputText3" id="exampleInputText3" placeholder="Job Title">
+                  </div>
+                  <div class="form-group">
+                      <input type="text" class="form-control"  name ="exampleInputText2" id="exampleInputText2" placeholder="City">
+                  </div>
+                  <button type="submit" class="btn btn-default _search">Search vacancy</button>
+              </form>
+            <!-- END Navigation menu -->
+            </div>
+        </nav>
+
+    </div>
+
+<div class="menus container top-container">
+        <img src="{% static "img/logo-envato.png" %}" class="foto_search">
+{#        #}
+        <div class="section-top" style="text-align: left">
+            <h1 class="Name_vacancy col-xs-9"> {{ vacancy.name }} </h1>
+            <h3 class="name_company">{{ vacancy.company.customer_name }}</h3>
+            <h5 class="time-create">{{ vacancy.created }}</h5>
+
+            <p class="lead">
+                 <div class="post_vacancy col-xs-12">{{ vacancy.description }}</div>
+            </p>
+        </div>
+
+            <ul class="details " style="margin-top: 15%">
+                <li class="col-xs-4" style="text-align:left">
+                    <span class="glyphicon glyphicon-map-marker"></span>
+                    <span>{{ vacancy.company.customer_city}}</span>
+                </li>
+                <li class="col-xs-4" style="text-align:left">
+                    <span class="glyphicon glyphicon-envelope"></span>
+                    <span>{{ vacancy.company.customer_phone}}</span>
+                </li>
+                <li class="col-xs-4" style="text-align:left">
+                    <span style="text-align: center" class="glyphicon glyphicon-phone-alt"></span>
+                    <span>{{ vacancy.company.customer_email}}</span>
+                </li>
+            </ul>
+
+{#            <div class="col-xs-6"> <a href="{% url 'product' p.id %}" class="name_vacancy"> <h4 class="name_job"> {{ p.name | truncatechars_html:29}} </h4></a></div>#}
+{#            <br><div class="col-xs-7"> <h5 class="name_company">{{ p.company.customer_name }}</h5></div>#}
+{#            <div class="product_info_company">#}
+{#                <p> Company: <i class="ifno_profesion"> {{ vacancy.company.customer_name}} </i>  </p>#}
+{#                <p> Phone: <i class="ifno_profesion"> {{ vacancy.company.customer_phone}} </i> </p>#}
+{#                <p> City: <i class="ifno_profesion"> {{ vacancy.company.customer_city}} </i> </p>#}
+{#                <p> Type of employment: <i class="ifno_profesion"> {{ vacancy.status.name}} </i> </p>#}
+{#                <p style="text-align: left; padding-left: 5%"> add: <i class="ifno_profesion"> {{ vacancy.created }} </i>{{ vacancy.salary }}  {{ vacancy.type_salary }}  </p>#}
+{#            </div>#}
+{#            <p style="text-align: left; padding-left: 5%"> add: <i class="ifno_profesion"> {{ vacancy.created }} </i>  </p>#}
+        </div>
+
+
+    <div class="container">
+    {#        <h2>Описание вакансии</h2>#}
+        <div  style="background-color: white; margin-top: 5%">
+            <h3 class="Title_of_the_description">Обовязки</h3>
+            <dd class="post_vacancy">{{ vacancy.requirements }}</dd>
+            <dt><h3 class="Title_of_the_description">Вимоги</h3></dt>
+            <div class="post_vacancy">{{ vacancy.duties }}</div>
+            <dt><h3 class="Title_of_the_description">Пакет послуг</h3></dt>
+            <div class="post_vacancy">{{ vacancy.package_that_compensates }}</div>
+        </div>
+
+
+        <form class=" form-horizontal" action=" " method="post"  id="contact_form" style="margin-top: 5%;">
+        <fieldset class="tyt" style="color: #7e8890;">
+        <!-- Form Name -->
+        <legend style="color: #7e8890;">Contact Us Today!</legend>
+
+        <!-- Text input-->
+
+        <div class="form-group" >
+          <label class="col-md-4 control-label">First Name</label>
+          <div class="col-md-4 inputGroupContainer">
+          <div class="input-group">
+          <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+          <input  name="first_name" placeholder="First Name" class="form-control"  type="text">
+            </div>
+          </div>
+        </div>
+
+        <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" >Last Name</label>
+                    <div class="col-md-4 inputGroupContainer">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                            <input name="last_name" placeholder="Last Name" class="form-control"  type="text">
+                        </div>
+                    </div>
+            </div>
+
+        <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label">E-Mail</label>
+                <div class="col-md-4 inputGroupContainer">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                        <input name="email" placeholder="E-Mail Address" class="form-control"  type="text">
+                    </div>
+                </div>
+            </div>
+
+        <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label">Phone #</label>
+                <div class="col-md-4 inputGroupContainer">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
+                        <input name="phone" placeholder="(845)555-1212" class="form-control" type="text">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label">City</label>
+                <div class="col-md-4 inputGroupContainer">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+                        <input name="city" placeholder="city" class="form-control"  type="text">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Select Basic -->
+            <div class="form-group">
+                <label class="col-md-4 control-label">Resume</label>
+                <div class="col-md-4 selectContainer">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+                        <input type="file" class="form-control selectpicker"  placeholder="">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label">Website or domain name</label>
+                <div class="col-md-4 inputGroupContainer">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-globe"></i></span>
+                        <input name="website" placeholder="Website or domain name" class="form-control" type="text">
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-4 control-label">Description</label>
+                <div class="col-md-4 inputGroupContainer">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+        	            <textarea class="form-control" name="comment" placeholder="Project Description"></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Success message -->
+            <div class="alert alert-success" role="alert" id="success_message">
+                Success
+                <i class="glyphicon glyphicon-thumbs-up"></i>
+                Thanks for contacting us, we will get back to you shortly.
+            </div>
+
+            <!-- Button -->
+            <div class="form-group">
+            <label class="col-md-4 control-label"></label>
+                <div class="col-md-4">
+                    <button type="submit" class="btn btn-success" style="width: 200px;"><i>Send</i>
+                    <span class="glyphicon glyphicon-send " style="color: white"></span></button>
+                </div>
+            </div>
+        </fieldset>
+        </form>
+    </div>
+
+    <nav class="cvv">
+        <span class="text-muted"> © 2017 - Site Built By Rozhko Bohdan.  Performed with Django 1.11.7 </span>
+    </nav>
+</div>
+
+
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+
+</body>
+</html>

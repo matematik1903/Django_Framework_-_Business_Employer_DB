@@ -1,0 +1,192 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <form action="{% url 'find' %}" method="post" class="form-inline" style="margin-top:  3%;">
+        {% csrf_token %}
+         <div class="form-group">
+            <input type="text" class="form-control" name ="exampleInputText3" id="exampleInputText3" placeholder="Job Title">
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control"  name ="exampleInputText2" id="exampleInputText2" placeholder="City">
+        </div>
+            <button type="submit" class="btn btn-default">Search vacancy</button>
+    </form>
+
+    <header class = "Title_search" style="margin-top: 5%;">
+        <div class="row">
+            <div class="col-xs-12" style="text-align: center; color: #d9534f;">
+                <h1>{{ name }}</h1>
+
+
+            {% for us in j_user %}
+                <ul class="details" style="margin-top: 8%; color: #5cb85c; font-size: 14px; margin-left: -13%;">
+                    <li class="col-xs-4" style="text-align:center">
+                        <span class="glyphicon glyphicon-map-marker"></span>
+                        <span>{{ us.customer_city }}</span>
+                    </li>
+                    <li class="col-xs-4" style="text-align:center">
+                        <span class="glyphicon glyphicon-envelope"></span>
+                        <span>{{ us.customer_phone }} </span>
+                    </li>
+                    <li class="col-xs-4" style="text-align:left;" >
+                        <span style="text-align: center" class="glyphicon glyphicon-phone-alt"></span>
+                        <span>{{ us.customer_email }}</span>
+                    </li>
+                </ul>
+            {% endfor %}
+            </div>
+        </div>
+    </header>
+
+    <form action=" " method="post" class="add_vacancy" style="margin-top: 1%; ">
+          {% csrf_token %}
+          <div class="input-lg col-xs-3" style="text-align: center; background-color: inherit; color: #9b9ea9;">
+              <button type="submit" class="btn" style="width: 100%; background-color: inherit;">
+                  <span class="glyphicon glyphicon-home"></span>
+                  <a href="{% url 'landing' %}" style="color: #9b9ea9;"> Home </a></span>
+              </button>
+          </div>
+
+          <div class=" input-lg col-xs-3" style="text-align: center;background-color: inherit; color: #9b9ea9;">
+              <button type="submit" class="btn" style="width: 100%; background-color: inherit;">
+                  <span class="glyphicon glyphicon-plus"></span>
+                  <a href="#add_vac" style="color: #9b9ea9;"> Add vacandy</a>
+              </button>
+          </div>
+
+          <div class=" input-lg col-xs-3" style="text-align: center;background-color: inherit; color: #9b9ea9;">
+              <button type="submit" class="btn" style="width: 100%; background-color: inherit;">
+                  <span class="glyphicon glyphicon-cog"></span>
+                  <a href="{% url 'open_setup' %}" style="color: #9b9ea9;"> Setting </a>
+              </button>
+          </div>
+
+           <div class="input-lg col-xs-3" style="text-align: center;background-color: inherit; color: #9b9ea9;">
+                <button type="submit" class="btn" style="width: 100%; background-color: inherit;">
+                    <span class="glyphicon glyphicon-off"></span>
+                    <a href="{% url 'login:acc_logout' %}" style="color: #9b9ea9;"> Logout </a>
+                </button>
+          </div>
+    </form>
+
+    {% block contentio %}
+
+    {% endblock %}
+
+     <section class="no-padding-top bt-alt">
+        <div class="container">
+            <div class="row item-blocks-condensed">
+
+                <div class = "Title_search col-xs-11" style="margin-left: 3%;">
+                    <span class="_search_span">Latest</span>
+                    <h2 class="_search">Your vacancies</h2>
+                </div>
+
+                {% for p in vacancy %}
+                    <div class="col-xs-12">
+                        <header>
+                            <a class="item-block" href="#">
+                                <div class="hgroup">
+                                    <div class="col-xs-6"> <a href="{% url 'product' p.id %}"> <h4 class="name_job"> {{ p.name | truncatechars_html:29 }} </h4></a></div>
+                                    <br><div class="col-xs-7"> <h5 class="name_company">{{ p.company.customer_name }}</h5></div>
+                                </div>
+                                <div class="header-meta">
+                                    <form action="{% url 'product_delete' p.id %}" method="post">
+                                    {% csrf_token %}
+                                        <div class="status_vacancy">
+                                            <span class="label" style="margin-right: -1%;">
+                                                <button type="submit" class="brn btn-danger" style="border-radius: 4px;">delete</button>
+                                            </span>
+                                        </div>
+                                    </form>
+
+                                    <div class="status_vacancy">
+                                      <span class="label label-success">{{ p.status }}</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </header>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <div class = "Title_search" id = "add_vac" style="margin-top: 5%;">
+        <span class="_search_span">Latest</span>
+        <h2 class="_search">Add new job</h2>
+    </div>
+
+    <h5 class="result_search" style="text-align: center;
+                                     padding-left: 0;">
+        Write about your company, job description, skills required, benefits, etc.
+    </h5>
+
+       <div class="container add_coin" style="margin-bottom: 5%">
+        <div class="row" style="width: 60%; margin-left: 20%;">
+
+            <form action="{% url 'add_vacancy' %}" method="post" class="add_vacancy" style="margin-top: 5%; ">
+                {% csrf_token %}
+                <div class="form-group col-xs-8">
+                    <input name="name" class="form-control input-lg" type="text"  required placeholder="Job title, e.g. Front-end developer">
+                </div>
+
+                <div class="form-group col-xs-4">
+                    <select class="form-control input-lg" name="state" required style="color: #9b9ea9;">
+                        <option>Type of employment</option>
+                        <option>Повна зайнятість</option>
+                        <option>Неповна зайнятість</option>
+                        <option>Cтудент</option>
+                        <option>Відалена робота</option>
+                        <option>інше</option>
+                    </select>
+                </div>
+
+                <div class="form-group col-xs-6">
+                    <input name="number" class="form-control input-lg" required placeholder="Salary" class="form-control"  type="number">
+                </div>
+
+                <div class="form-group col-xs-6">
+                    <input name="type_salary" class="form-control input-lg" placeholder="Type salary" class="form-control" type="text">
+                </div>
+
+                <div class="input-group input-lg">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+        	            <textarea class="form-control" name="comment_1" placeholder="Description"></textarea>
+                </div>
+
+                <div class="input-group input-lg">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                    <textarea class="form-control" name="comment_2" placeholder="Requirements"></textarea>
+                </div>
+
+                <div class="input-group input-lg">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                    <textarea class="form-control" name="comment_3" placeholder="Duties"></textarea>
+                </div>
+
+                <div class="input-group input-lg">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                    <textarea class="form-control" name="comment_4" placeholder="Package that compensates"></textarea>
+                </div>
+
+                <div class = "Title_search" style="margin-top: 5%;">
+                    <span class="_search_span">Are you done? </span>
+                    <h2 class="_search">Submit Job</h2>
+                </div>
+
+                <h5 class="result_search" style="text-align: center;
+                                                 padding-left: 0;">
+                    Please review your information once more and press the below button to put your job online.
+                </h5>
+
+                <div class="input-group input-lg col-xs-12" style="text-align: center;background-color: inherit">
+                    <button type="submit" class="btn btn-success"> Add vacancy <span class="glyphicon glyphicon-send"></span></button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+{%  endblock %}
+

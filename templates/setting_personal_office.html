@@ -1,0 +1,175 @@
+{% extends "personal_office.html" %}
+
+{% block contentio %}
+    <div class="container">
+        <div class = "Title_search" >
+            <span class="_search_span">Latest</span>
+            <h2 class="_search">Setting</h2>
+        </div>
+
+        <h5 class="result_search" style="text-align: center; padding-left: 0;">Here you can change your data</h5>
+
+         <form action="{% url 'rename' %}" method="post" class="add_vacancy" style="margin-top: 5%; margin-left: 18%; width: 100%">
+             {% csrf_token %}
+             <div class="form-group col-xs-8">
+                 <input type="text" class="form-control input-lg" name="name" id=name" required  placeholder="New name"/>
+             </div>
+
+             <div class="form-group col-xs-8">
+                 <input type="text" class="form-control input-lg" name="phone" id="phone"  placeholder="New phone" required  pattern="^[ 0-9]+$"/>
+             </div>
+
+             <div class="form-group col-xs-8">
+                 <input type="email" class="form-control input-lg" name="email" id="email" required  placeholder="New email "/>
+             </div>
+
+             <div class="form-group col-xs-8">
+                 <input type="text" class="form-control input-lg" name="city" id="city"  placeholder="New sity" required/>
+             </div>
+
+             <div class="form-group col-xs-8">
+                <button type="submit" class="btn btn-success" STYLE="width: 130px;">Save</button>
+             </div>
+         </form>
+
+        <div class = "Title_search col-xs-11" style="margin-left: 5%; margin-top: 5%">
+            <span class="_search_span">Latest</span>
+            <h2 class="_search">Delete account</h2>
+        </div>
+
+        <h5 class="result_search col-xs-11" style="margin-left: 5%;
+                                                   text-align: center;
+                                                   padding-left: 0;">
+            Think carefully before deciding to delete an account
+        </h5>
+
+        <form action="{% url 'del_user' %}" method="post" class="add_vacancy" style="margin-top: 5%; margin-left: 18%; width: 100%">
+             {% csrf_token %}
+             <div class="form-group col-xs-8">
+                <button type="submit" class="btn btn-danger" STYLE="margin-top: 5%;width: 125px"">Delete account</button>
+             </div>
+         </form>
+
+       <form action="{% url 'personal' %}" method="post" class="add_vacancy col-xs-11" style="margin-top: 5%; margin-bottom: -5%; width: 100%">
+           {% csrf_token %}
+           <button type="submit" class="btn btn-warning" STYLE="margin-top: 5%; margin-left:3%; width: 125px">Close setting</button>
+       </form>
+    </div>
+{#    <form action="{% url 'rename' %}" method="post">#}
+{#    <div class="cont_form_sign_up">#}
+{#                        <a href="#" onclick="ocultar_login_sign_up()"><i class="material-icons">&#xE5C4;</i></a>#}
+{#                        <h2>SIGN UP</h2>#}
+{##}
+{#                        {% csrf_token %}#}
+{##}
+{#                        <input type="text" name="name" id=name" required  placeholder="Name"/>#}
+{#                        <label for="login"></label>#}
+{##}
+{#                        <input type="text" name="phone" id="phone"  placeholder="Tell" required  pattern="^[ 0-9]+$"/>#}
+{#                        <label for="second_name"></label>#}
+{##}
+{#                        <input type="text" name="city" id="city"  placeholder="Sity" required/>#}
+{#                        <label for="sity"></label>#}
+{##}
+{#                        <input type="email" name="email" id="email" required  placeholder="Email "/>#}
+{#                        <label for="mail"></label>#}
+{##}
+{#                        <button class="btn_sign_up" onclick="cambiar_sign_up()">SIGN UP</button>#}
+{#                    </div>#}
+{#                    </form>#}
+{##}
+{##}
+{##}
+{##}
+{##}
+{#<form class="well form-horizontal" method="post"  id="contact_form" style="margin-top: 5%;">#}
+{#        {% csrf_token %}#}
+{#        <fieldset id="add_vac">#}
+{#            <!-- Form Name -->#}
+{#            <legend style="text-align: center;"> Setup </legend>#}
+{##}
+{#            <div class="form-group">#}
+{#                <label class="col-md-4 control-label"></label>#}
+{#                <div class="col-md-4" style="text-align: center;">#}
+{#                    <button type="button" class="btn btn-warning btn-danger" style=" float: right;" >#}
+{#                        <a href="{% url 'close_setup' %}" style="color: white; font-size: 15px; text-decoration: none;">#}
+{#                         <a href="{% url 'del_user' %}" style="color: white; font-size: 15px; text-decoration: none; ">#}
+{#                            Delete account <small><span class="glyphicon glyphicon-trash"></span></small> </a>#}
+{#                    </button>#}
+{#                </div>#}
+{#            </div>#}
+{##}
+{##}
+{#        <form action="{% url 'rename' %}" method="post">#}
+{#            <!-- Text input-->#}
+{#            {{ y }}#}
+{#            <div class="form-group">#}
+{#                <label class="col-md-4 control-label">New name(login): </label>#}
+{#                <div class="col-md-4 inputGroupContainer">#}
+{#                    <div class="input-group">#}
+{#                        <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>#}
+{#                        <input name="name" placeholder="name" class="form-control"  type="text">#}
+{##}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{##}
+{#            <!-- Text input-->#}
+{#            <div class="form-group">#}
+{#                <label class="col-md-4 control-label">New city: </label>#}
+{#                <div class="col-md-4 inputGroupContainer">#}
+{#                    <div class="input-group">#}
+{#                        <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>#}
+{#                        <input name="city" placeholder="city" class="form-control" type="text">#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{##}
+{#            <div class="form-group">#}
+{#                <label class="col-md-4 control-label">New phone: </label>#}
+{#                <div class="col-md-4 inputGroupContainer">#}
+{#                    <div class="input-group">#}
+{#                        <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>#}
+{#                        <input id="phone" name="phone" placeholder="phone" class="form-control" type="text">#}
+{#                        <label for="phone"></label>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{##}
+{#            <div class="form-group">#}
+{#                <label class="col-md-4 control-label">New email: </label>#}
+{#                <div class="col-md-4 inputGroupContainer">#}
+{#                    <div class="input-group">#}
+{#                        <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>#}
+{#                        <input id="email" name="email" placeholder="email" class="form-control" type="email">#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{#            <!-- Button -->#}
+{#            <div class="form-group">#}
+{#                <label class="col-md-4 control-label"></label>#}
+{#                <div class="col-md-4" style="text-align: center;">#}
+{#                    <button type="submit" class="btn btn-warning" style=" margin-right: 50%" >#}
+{##}
+{#                            Save <span class="glyphicon glyphicon-send"></span>#}
+{#                    </button>#}
+{#                    </div>#}
+{#            </div>#}
+{##}
+{#            </form>#}
+{#            <!-- Button -->#}
+{#            <div class="form-group">#}
+{#                <label class="col-md-4 control-label"></label>#}
+{#                <div class="col-md-4" style="text-align: center;">#}
+{#                    <button type="button" class="btn btn-warning" style=" margin-left: 50%; margin-top: -23%;" >#}
+{#                        <a href="{% url 'close_setup' %}" style="color: white; font-size: 15px; text-decoration: none;">#}
+{#                            Close <span class="glyphicon glyphicon-off"></span> </a>#}
+{#                    </button>#}
+{#                </div>#}
+{#            </div>#}
+{##}
+{##}
+{#        </fieldset>#}
+{#    </form>#}
+
+{%  endblock %}

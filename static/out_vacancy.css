@@ -1,0 +1,170 @@
+body {
+    font-family: Open Sans,sans-serif;
+    font-size: 16px;
+    line-height: 28px;
+    color: #7e8890;
+    background-color: rgba(0, 0, 0, 0.65);
+}
+
+.top-container{
+    margin-top: 20%;
+    border-radius: 20px;
+}
+
+
+.container {
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.menus {
+    background-color: white;
+}
+
+.out_vacancy {
+    border: solid 1px #000000;
+    background-color: rgba(133, 255, 123, 0.14);
+    text-align: left;
+    padding: 3%;
+    width: 80%;
+
+}
+
+.post_vacancy {
+    text-align: left;
+}
+
+.product_info_company {
+    padding-left: 5%;
+    text-align: left;
+}
+
+.btn_rezume {
+    margin-right: 13%;
+    margin-top: 1%;
+}
+
+.out_vacancy_vip {
+    border: solid 1px #8f8f8f;
+    background-color: rgba(133, 255, 123, 0.14);
+    text-align: left;
+    padding: 1%;
+    width: 70%;
+}
+
+#success_message{ display: none;}
+
+.Title_of_the_description {
+    font-size: 25px;
+    font-family: Oswald, sans-serif;
+    letter-spacing: 1px;
+    margin: 12px 0;
+    line-height: 1.6;
+    color: #79838b;
+    text-align: left;
+    font-stretch: expanded
+}
+
+.post_vacancy {
+    line-height: 28px;
+    font-size: 16px;
+    font-family: Oswald, sans-serif;
+    color: #7e8890;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    padding-left: 5%;
+}
+
+nav {
+    padding-top: 2%;
+    margin-bottom: 2%;
+}
+
+.nav-menu {
+    display: block;
+    text-align: center;
+}
+
+.user-login {
+    margin-top: 3%;
+    margin-right: 6%;
+}
+
+.logotype {
+    margin-top: 30%;
+    height: 60px;
+    max-width: 100%;
+    vertical-align: middle;
+    margin-left: 125%;
+}
+
+.Name_vacancy {
+    color: #7e8890;
+    font-size: 40px;
+    float: left;
+    font-weight: 500;
+    padding-top: 10px;
+}
+
+.time-create {
+    color: #7e8890;
+    float: right;
+    font-size: 13px;
+    margin-top: -23px;
+}
+
+.details {
+    color: #7e8890;
+}
+
+.foto_search {
+    float: left;
+    width: 92px;
+    margin: 30px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: Oswald,sans-serif;
+    letter-spacing: 1px;
+    margin: 16px 0;
+    line-height: 1.4;
+}
+
+.name_company {
+    color: #7e8890;
+    font-size: 20px;
+    float: left;
+    margin-left: 15px;
+    margin-top: -5px;
+    font-weight: 500;
+}
+
+@media (max-width: 700px) {
+    body {
+        text-align: center;
+        font-size: 15px;
+    }
+
+    .logotype {
+        height: 60px;
+        max-width: 100%;
+        float: left;
+        margin: 0;
+        margin-bottom: 30%;
+        vertical-align: middle;
+    }
+
+    p {
+        font-size: 10px;
+    }
+
+    .col-xs-4 , .col-xs-9{
+        width: 100%;
+        text-align: center;
+    }
+
+    .foto_search {
+        float: none;
+        width: 0;
+        margin: 0;
+    }
+}
